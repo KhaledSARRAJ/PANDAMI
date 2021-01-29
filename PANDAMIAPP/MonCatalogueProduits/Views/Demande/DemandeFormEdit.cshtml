@@ -1,0 +1,47 @@
+﻿
+@model MonCatalogueProduit.Service.Demande
+
+
+@{ ViewBag.title = "Edit d'un Demande"; }
+
+
+<div class="container spacer">
+
+    <form asp-coontroller="Demande" asp-action="Update" method="post">
+        <div class="form-group">
+            @Html.LabelFor(p => p.DemandeID, new { @class = "control-label" })
+            @Html.TextBoxFor(p => p.DemandeID, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(p => p.Description, new { @class = "control-label" })
+            @Html.TextBoxFor(p => p.Description, new { @class = "form-control" })
+            @Html.ValidationMessageFor(p => p.Description, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(p => p.DateEnregistrementDemande, new { @class = "control-label" })
+            @Html.TextBoxFor(p => p.DateEnregistrementDemande, new { @class = "form-control" })
+            @Html.ValidationMessageFor(p => p.DateEnregistrementDemande, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(p => p.DatedeRealisation, new { @class = "control-label" })
+            @Html.TextBoxFor(p => p.DatedeRealisation, new { @class = "form-control" })
+            @Html.ValidationMessageFor(p => p.DatedeRealisation, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label class="control-label"> Categorie: </label>
+            <select name="CategoriesID">
+
+                @{ foreach (var c in ViewBag.categories)
+                                {
+                    <option value="@c.CategoriesID">@c.LibelleDomaine</option> } }
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+
+</div>
+
