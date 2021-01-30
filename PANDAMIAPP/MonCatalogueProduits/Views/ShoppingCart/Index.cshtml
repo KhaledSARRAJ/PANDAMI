@@ -1,0 +1,47 @@
+﻿@using GestionProduits.ViewModels
+@using GestionProduits.Service
+@model ShoppingCartViewModel
+
+<div class="row checkoutForm">
+    <h2>Panier des demandes</h2>
+    <h4>Ici votre Candidature pour les demandes.</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>N° Demande</th>
+                <th>Nom utilisateur </th>
+                <th>Categorie</th>
+                <th>Date de Realisation</th>
+                <th>Tel</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.ShoppingCart.ShoppingCartItems)
+            {
+            <tr>
+                <td class="text-center">@line.Demande.DemandeID</td>
+                <td class="text-left">@line.Demande.DemandeUtilisateur.NomUtilisateur</td>
+                <td class="text-left">@line.Demande.categorieDemande.LibelleDomaine</td>
+
+                <td class="text-left">@line.Demande.DatedeRealisation</td>
+                <td class="text-left">@line.Demande.DemandeUtilisateur.NumTel</td>
+                <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-demandeId="@line.Demande.DemandeID"></a></td>
+
+            </tr>}
+        </tbody>
+        
+    </table>
+    <div class="text-right">
+        <div class="btn-group ">
+            <a class="btn btn-success" asp-controller="Demande" asp-action="Index">
+                Postuler Encore <span class="caret"></span>
+            </a>
+
+            <p>
+
+            </p>
+            <a class="btn-group" asp-controller="Order" asp-action="Checkout">Check out</a>
+        </div>
+    </div>
+</div>

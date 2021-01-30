@@ -12,37 +12,43 @@
 
         <form method="post" asp-action="SaveDemande">
             <div class="form-group">
-                <label class="control-label">Demande: </label> <!--name doit etre pareil dans la classe, value la valeur par defaut-->
+                <label class="control-label">Description : </label> <!--name doit etre pareil dans la classe, value la valeur par defaut-->
                 <input type="text" name="Description" class="form-control" value="@Model.Description" />
                 <!--Message d"erreur-->
                 @Html.ValidationMessageFor(p => p.Description, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
-                <label class="control-label">Date debut : </label> <!--name doit etre pareil dans la classe, value la valeur par defaut-->
-                <input type="text" name="DateEnregistrementDemande" class="form-control" value="@Model.DateEnregistrementDemande" />
+                <label class="control-label">Ville : </label> <!--name doit etre pareil dans la classe, value la valeur par defaut-->
+                <input type="text" name="Ville" class="form-control" value="@Model.Ville" />
                 <!--Message d"erreur-->
-                @Html.ValidationMessageFor(p => p.DateEnregistrementDemande, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(p => p.Ville, "", new { @class = "text-danger" })
             </div>
             <div class="form-group">
-                <label class="control-label">Date de fin: </label> <!--name doit etre pareil dans la classe, value la valeur par defaut-->
-                <input type="text" name="DatedeRealisation" class="form-control" value="@Model.DatedeRealisation" />
+                <label class="control-label">Date de réalisation : </label> <!--name doit etre pareil dans la classe, value la valeur par defaut-->
+                <input type="date" name="DatedeRealisation" class="form-control" value="@Model.DatedeRealisation" />
                 <!--Message d"erreur-->
                 @Html.ValidationMessageFor(p => p.DatedeRealisation, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label class="control-label">Heure : </label> <!--name doit etre pareil dans la classe, value la valeur par defaut-->
+                <input type="text" name="Heure" class="form-control" value="@Model.Horaire" />
+                <!--Message d"erreur-->
+                @Html.ValidationMessageFor(p => p.Horaire, "", new { @class = "text-danger" })
             </div>
 
             <!--Afficher la liste de categorie-->
             <div class="form-group">
-                <label class="control-label"> Categorie: </label> 
-              <select name="CategoriesID">
+                <label class="control-label"> Categorie: </label>
+                <select name="CategoriesID">
 
-                  @{ 
-                      foreach (var c in ViewBag.categories)
-                      {
-                                    <option value="@c.CategoriesID">@c.LibelleDomaine</option>
-                      }
-                  }
+                    @{
+                        foreach (var c in ViewBag.categories)
+                        {
+                            <option value="@c.CategoriesID">@c.LibelleDomaine</option>
+                        }
+                    }
 
-              </select>
+                </select>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Save</button>

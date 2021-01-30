@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GestionProduits.Service;
+using GestionProduits.Service.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,11 +34,13 @@ namespace GestionProduits
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => ShoppingCart.GetCart(sp));
             services.AddDbContext<CatalogueDbContext>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            
+            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddMemoryCache();
+            services.AddSession();
             // ou ben pour ne pas faire Singleton : services.AddTransient<IProduitService, ProduitServiceImpl>();
         }
 
@@ -56,7 +60,7 @@ namespace GestionProduits
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -22,17 +22,22 @@ namespace MonCatalogueProduit.Service
         public string DateEnregistrementDemande { get; set; }
 
         //[DataType(DataType.DateTime)]
-        [Required]
-        [MinLength(4), MaxLength(140)]
-        public string DatedeRealisation { get; set; }
+        public DateTime DatedeRealisation { get; set; }
         public string heureSouhaitee { get; set; }
         [Required]
-        [MinLength(4), MaxLength(140)]
+        [MinLength(1), MaxLength(140)]
         public string Description { get; set; }
         
         public string DateClotureDemande { get; set; }
         public string DateModification { get; set; }
         public string DateAnnulationDemande { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string Ville { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Horaire { get; set; }
+       
         public string adressesecondaire { get; set; }
         public int CategoriesID { get; set; }
         [ForeignKey("CategoriesID")]

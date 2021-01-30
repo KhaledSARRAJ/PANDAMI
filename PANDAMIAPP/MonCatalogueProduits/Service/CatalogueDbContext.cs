@@ -1,4 +1,5 @@
-﻿using GestionProduits.Service;
+﻿
+using GestionProduits.Service;
 using Microsoft.EntityFrameworkCore; 
 using System;
 using System.Collections.Generic;
@@ -28,8 +29,12 @@ namespace MonCatalogueProduit.Service
         public DbSet<Indisponibilite>ListIndisponiblite { get; set; }
         public DbSet<ReferentielRegion> ListRegion { get; set; }
         public DbSet<ReferentielVille> ListVille { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
 
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+   
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

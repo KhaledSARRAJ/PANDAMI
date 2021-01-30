@@ -1,0 +1,208 @@
+﻿@using GestionProduits.Service;
+@model Utilisateur
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Inscription | PAND'ami</title>
+    <link rel="stylesheet" href="/css/styleRegister.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>Inscription</header>
+        <div class="progress-bar">
+            <div class="step">
+                <p>Identité</p>
+                <div class="bullet">
+
+                    <span>1</span>
+                </div>
+                <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+                <p>Contact</p>
+                <div class="bullet">
+                    <span>2</span>
+                </div>
+                <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+                <p>Adresse</p>
+                <div class="bullet">
+                    <span>3</span>
+                </div>
+                <div class="check fas fa-check"></div>
+            </div>
+            <div class="step">
+                <p>Connexion</p>
+                <div class="bullet">
+                    <span>4</span>
+                </div>
+                <div class="check fas fa-check"></div>
+            </div>
+        </div>
+        <div class="form-outer">
+
+            <form method="post" asp-action="Register">
+                <div class="page slide-page">
+                    <div class="title">Identité</div>
+                    <div class="field">
+                        <div class="label">Nom</div>
+                        <input type="text" name="Nom" class="form-control" value="@Model.Nom" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.Nom, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="field">
+                        <div class="label">Prénom</div>
+                        <input type="text" name="Prenom" class="form-control" value="@Model.Prenom" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.Prenom, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="field">
+                        <div class="label">Date de naissance</div>
+                        <input type="date" name="DateDeNaissance" class="form-control" value="@Model.DateDeNaissance" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.DateDeNaissance, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="field">
+                        <div class="label">Sexe</div>
+                        <select>
+                            <option></option>
+                            <option value="@Model.sexe">Homme</option>
+                            <option value="@Model.sexe">Femme</option>
+                            <option value="@Model.sexe">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <button class="firstNext next">Suivant</button>
+                    </div>
+                </div>
+
+                <div class="page">
+                    <div class="title">Contact</div>
+                    <div class="field">
+                        <div class="label">E-mail</div>
+                        <input type="text" name="E-mail" class="form-control" value="@Model.AdresseMail" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.AdresseMail, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="field">
+                        <div class="label">Téléphone</div>
+                        <input type="text" name="Telephone" class="form-control" value="@Model.NumTel" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.NumTel, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="field">
+                        <div class="label">Autre Contact (facultatif)</div>
+                        <input type="text" name="Autre" class="form-control" value="@Model.autreContact" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.autreContact, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="field btns">
+                        <button class="prev-1 prev">Précédent</button>
+                        <button class="next-1 next">Suivant</button>
+                    </div>
+                </div>
+
+                <div class="page">
+                    <div class="title">Adresse</div>
+
+                    <div class="field">
+                        <div class="label">Région</div>
+                        <select>
+                            <option></option>
+                            <option value="@Model.Region">Auvergne-Rhône-Alpes</option>
+                            <option value="@Model.Region">Bourgogne-Franche-Comté</option>
+                            <option value="@Model.Region">Bretagne</option>
+                            <option value="@Model.Region">Centre-Val de Loire</option>
+                            <option value="@Model.Region">Corse</option>
+                            <option value="@Model.Region">Grand Est</option>
+                            <option value="@Model.Region">Hauts-de-France</option>
+                            <option value="@Model.Region">Île-de-France</option>
+                            <option value="@Model.Region">Normandie</option>
+                            <option value="@Model.Region">Nouvelle-Aquitaine</option>
+                            <option value="@Model.Region">Occitanie</option>
+                            <option value="@Model.Region">Pays de la Loire</option>
+                            <option value="@Model.Region">Provence-Alpes-Côte d'Azur</option>
+                            <option value="@Model.Region">Guadeloupe</option>
+                            <option value="@Model.Region">Martinique</option>
+                            <option value="@Model.Region">Guyane</option>
+                            <option value="@Model.Region">La Réunion</option>
+                            <option value="@Model.Region">Mayotte</option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+                        <div class="label">Numéro de rue</div>
+                        <input type="text" name="numero" class="form-control" value="@Model.NumeroRue" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.NumeroRue, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="field">
+                        <div class="label">Nom de la rue</div>
+                        <input type="text" name="nom" class="form-control" value="@Model.NomDeRue" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.NomDeRue, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="field">
+                        <div class="label">Code postal</div>
+                        <input type="text" name="codePostal" class="form-control" value="@Model.codePostal" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.codePostal, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="field">
+                        <div class="label">Ville</div>
+                        <input type="text" name="Ville" class="form-control" value="@Model.Ville" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.Ville, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="field btns">
+                        <button class="prev-2 prev">Précédent</button>
+                        <button class="next-2 next">Suivant</button>
+                    </div>
+                </div>
+
+                <div class="page">
+                    <div class="title">Connexion</div>
+                    <div class="field">
+                        <div class="label">Nom d'utilisateur</div>
+                        <input type="text" name="NomUtilisateur" class="form-control" value="@Model.NomUtilisateur" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.NomUtilisateur, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="field">
+                        <div class="label">Mot de passe</div>
+                        <input type="password" name="MotDePasse" class="form-control" value="@Model.MotDePasse" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.MotDePasse, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="field">
+                        <div class="label">Confirmer le mot de passe</div>
+                        <input type="password" name="confirmMotPasse" class="form-control" value="@Model.confirmMotPasse" />
+                        <!--Message d"erreur-->
+                        @Html.ValidationMessageFor(p => p.confirmMotPasse, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="field btns">
+                        <button class="prev-3 prev">Précédent</button>
+                        <button class="submit" value="Register">Je m'inscris!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+
+</body>
+</html>
