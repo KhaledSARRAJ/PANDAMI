@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label">Heure : </label> <!--name doit etre pareil dans la classe, value la valeur par defaut-->
-                <input type="text" name="Heure" class="form-control" value="@Model.Horaire" />
+                <input type="time" name="Heure" class="form-control" value="@Model.Horaire" />
                 <!--Message d"erreur-->
                 @Html.ValidationMessageFor(p => p.Horaire, "", new { @class = "text-danger" })
             </div>

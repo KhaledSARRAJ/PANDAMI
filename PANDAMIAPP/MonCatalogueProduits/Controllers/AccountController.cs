@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Microsoft.AspNetCore.Http;
 using System.Linq;
 using System.Threading.Tasks;
 using GestionProduits.Service;
@@ -11,7 +11,7 @@ namespace GestionProduits.Controllers
 {
     public class AccountController : Controller
     {
-        //CatalogueDbContext objUserDBEntities = new CatalogueDbContext();
+        CatalogueDbContext objUserDBEntities = new CatalogueDbContext();
         //public ActionResult Index()
         //{
         //    return View();
@@ -51,7 +51,7 @@ namespace GestionProduits.Controllers
         {
             this.dbContext = db;
         }
-        public IActionResult Register()
+        public ActionResult Register()
         {
             Utilisateur p = new Utilisateur();
             IEnumerable<Utilisateur> cats = dbContext.ListUtilisateurs;
@@ -60,7 +60,7 @@ namespace GestionProduits.Controllers
 
         }
         [HttpPost]
-        public IActionResult Register(Utilisateur p)
+        public ActionResult Register(Utilisateur p)
         {
             IEnumerable<Utilisateur> cats = dbContext.ListUtilisateurs;
             ViewBag.utilisateurs = cats;
@@ -77,7 +77,7 @@ namespace GestionProduits.Controllers
             return View();
 
         }
-        public IActionResult Login()
+        public ActionResult Login()
         {
             LoginModel p = new LoginModel();
             
@@ -86,28 +86,29 @@ namespace GestionProduits.Controllers
 
         }
         [HttpPost]
-        public IActionResult Login(LoginModel p)
+        public ActionResult Login(LoginModel p)
         {
             if (ModelState.IsValid)
             {
-               if( dbContext.ListUtilisateurs.Where(m => m.AdresseMail == p.Email && m.MotDePasse == p.Password).FirstOrDefault() == null)
+               if( objUserDBEntities.ListUtilisateurs.Where(m => m.AdresseMail == p.Email && m.MotDePasse == p.Password).FirstOrDefault() == null)
                 {
                     ModelState.AddModelError("Error", "Email and Password is not Matching");
                     return View();
                 }
                else
                 {
-                   // Session["AdresseMail"] = p.Email;
+                    /*HttpContext.Session.SetString("AdresseMail", p.Email);*/
+                  //  HttpContext.Session["LogID"] = 10;
                     RedirectToAction("Index", "Home");
                         }
             }
 
             return View();
         }
-        public ActionResult Logout()
-        {
-            return View();
-        }
+        //public ActionResult Logout()
+        //{
+        //    return View();
+        //}
 
     }
 

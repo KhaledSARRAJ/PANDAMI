@@ -61,8 +61,8 @@ namespace TestBaseDeDonner
                     DatedeRealisation = new DateTime(2021, 2, 19),
                     IdentifiantMAnnulation = 1,
                     Ville="Caen",
-                    Horaire= "aa",
-                   IdentifiantUtilisateur =1
+                    /*Horaire= 08:00,*/
+                    IdentifiantUtilisateur =1
                 });
                 db.ListeDemandes.Add(new Demande
                 {
@@ -73,7 +73,7 @@ namespace TestBaseDeDonner
                     DatedeRealisation = new DateTime(2021, 2, 19),
                     IdentifiantMAnnulation = 2,
                     Ville = "Caen",
-                    Horaire = "aa",
+                    /*Horaire = "aa",*/
                     IdentifiantUtilisateur = 2
                 });
                 db.ListeDemandes.Add(new Demande
@@ -85,7 +85,7 @@ namespace TestBaseDeDonner
                     DateEnregistrementDemande= "12/12/2020",
                     DatedeRealisation = new DateTime(2021, 2, 19),
                     Ville = "Caen",
-                    Horaire = "aa",
+                    /*Horaire = "aa",*/
                     IdentifiantUtilisateur = 1
                 });
 

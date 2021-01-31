@@ -51,7 +51,7 @@
                                             <td><a asp-action="Delete" asp-route-ID="@p.DemandeID" onclick="return confirm('Etes vous-sùre de vouloir supprimer ?');"> Supprimer</a></td>
                                             <td><a asp-action="Editer" asp-route-ID="@p.DemandeID"> Editer</a></td>
 
-                                            <td><a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-ID="@p.DemandeID"> Postuler</a></td>
+                                            <td><a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-demandeId="@p.DemandeID"> Postuler</a></td>
                                         </tr>
                         } }
                 </tbody>

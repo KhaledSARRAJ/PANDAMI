@@ -34,9 +34,9 @@ namespace MonCatalogueProduit.Service
         [Required]
         [StringLength(10)]
         public string Ville { get; set; }
-        [Required]
-        [StringLength(6)]
-        public string Horaire { get; set; }
+        /*[Required]
+        [StringLength(6)]*/
+        public TimeSpan Horaire { get; set; }
        
         public string adressesecondaire { get; set; }
         public int CategoriesID { get; set; }

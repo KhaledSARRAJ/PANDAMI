@@ -21,11 +21,11 @@
             {
             <tr>
                 <td class="text-center">@line.Demande.DemandeID</td>
-                <td class="text-left">@line.Demande.DemandeUtilisateur.NomUtilisateur</td>
-                <td class="text-left">@line.Demande.categorieDemande.LibelleDomaine</td>
+                <td class="text-left">@line.Demande.CategoriesID</td>
+                <td class="text-left">@line.Demande.Description</td>
 
-                <td class="text-left">@line.Demande.DatedeRealisation</td>
-                <td class="text-left">@line.Demande.DemandeUtilisateur.NumTel</td>
+                @*<td class="text-left">@line.Demande.DatedeRealisation</td>
+                <td class="text-left">@line.Demande.DemandeUtilisateur.NumTel</td>*@
                 <td class="text-center"><a class="glyphicon glyphicon-remove text-danger remove" asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-demandeId="@line.Demande.DemandeID"></a></td>
 
             </tr>}
